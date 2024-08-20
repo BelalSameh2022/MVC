@@ -47,7 +47,7 @@ const validateInput = (input, regex) => {
 
 const nameRegex = /^[a-zA-Z]{3,20}$/;
 const emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
-const passwordRegex = /^(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
+const passwordRegex = /^(?=.*?[a-zA-Z])(?=.*?[0-9])[a-zA-Z0-9]{6,}$/;
 
 validateForm("addForm", [
   { inputId: "name", regex: nameRegex },
@@ -67,4 +67,10 @@ const openUpdateModal = (id, name, email, password) => {
   document.getElementById("userName").value = name;
   document.getElementById("userEmail").value = email;
   document.getElementById("userPassword").value = password;
+};
+
+const openDeleteModal = (id, name) => {
+  // Set form values in the modal
+  document.getElementById("deletedId").value = id;
+  document.getElementById("deletedName").innerText = name;
 };
